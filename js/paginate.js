@@ -30,9 +30,15 @@
            
            itemsToPaginate.filter(":gt(" + (itemsPerPage - 1)  + ")").hide();
            
-           paginationContainer.find("ul li").on('click', function(){
+           paginationContainer.find("ul li").first().addClass(settings.activeClass).end().on('click', function(){
+			   
+			   var $this = $(this);
+			   
+			   $this.addClass(settings.activeClass);
+			   
+			   $this.siblings().removeClass(settings.activeClass);
            
-               var linkNumber = $(this).text();
+               var linkNumber = $this.text();
                
                 var itemsToHide = itemsToPaginate.filter(":lt(" + ((linkNumber-1) * itemsPerPage)  + ")");
                 $.merge(itemsToHide, itemsToPaginate.filter(":gt(" + ((linkNumber * itemsPerPage) - 1)  + ")"));

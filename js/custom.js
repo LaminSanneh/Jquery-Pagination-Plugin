@@ -4,7 +4,9 @@
     
         $(".pagination").customPaginate({
         
-            itemsToPaginate : ".post"
+            itemsToPaginate : ".post",
+			
+			activeClass : "active-class"
         
         });
     
