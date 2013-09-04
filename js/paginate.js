@@ -42,10 +42,13 @@
                
                 var itemsToHide = itemsToPaginate.filter(":lt(" + ((linkNumber-1) * itemsPerPage)  + ")");
                 $.merge(itemsToHide, itemsToPaginate.filter(":gt(" + ((linkNumber * itemsPerPage) - 1)  + ")"));
-                itemsToHide.hide();
                 
                 var itemsToShow = itemsToPaginate.not(itemsToHide);
-                itemsToShow.show();
+
+                $("html,body").animate({scrollTop:"0px"}, function(){
+                  itemsToHide.hide();
+                  itemsToShow.show();
+                });
            });
            
        }
